@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 1600px;
+}
+
+.search {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.search__btn {
+  margin-left: 8px;
+  margin-bottom: 16px;
+}
+
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  margin: 0 auto;
+}
+
+.movie-card {
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  border-radius: 10px;
+  
+}
+
+.movie-card__container {
+  padding: 24px 24px;
+  text-align: center;
+}
+
+.movie__img {
+    width: 100%;
+}
