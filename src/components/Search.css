@@ -1,0 +1,16 @@
+.container {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 1600px;
+}
+
+.search {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.search__btn {
+  margin-left: 8px;
+  margin-bottom: 16px;
+}

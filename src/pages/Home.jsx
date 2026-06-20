@@ -1,55 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import MovieCard from "../components/MovieCard";
 import axios from "axios";
-import "./Movies.css";
 
 const Home = () => {
-  const { title } = useParams();
-  const [movies, setMovies] = useState([]);
-  const [searchTitle, setSearchTitle] = useState(title);
+  const [movies, setMovies] = useState([]); // Movies to display
+  const [defaultMovies, setDefaultMovies] = useState([]); // Default movies
 
-  function onSearch() {
-    fetchMovies(searchTitle);
-  }
-
-  async function fetchMovies(movieTitle) {
-    const { data } = await axios.get(
-      "https://www.omdbapi.com/?apikey=88b32aac&s=friends",
-    );
-    setMovies(data.Search || []);
-    console.log(data);
-  }
-
+  // Fetch default movies when the component mounts
   useEffect(() => {
-    fetchMovies();
+    const fetchDefaultMovies = async () => {
+      const { data } = await axios.get(
+        "https://www.omdbapi.com/?apikey=88b32aac&s=friends"
+      );
+      setDefaultMovies(data.Search || []);
+      setMovies(data.Search || []);
+    };
+
+    fetchDefaultMovies();
   }, []);
+
+  // Function to handle search results
+  const handleSearchResults = (searchResults) => {
+    if (searchResults.length > 0) {
+      setMovies(searchResults);
+    } else {
+      setMovies(defaultMovies); // Reset to default if no search results
+    }
+  };
+
   return (
-    <>
-      <div className="container">
-        <div className="movie-list">
-          {movies.map((movie) => (
-            <div className="movie-card">
-              <div className="movie-card__container">
-                <img className="movie__img" src={movie.Poster} />
-                <h3>{movie.Title}</h3>
-                <p>
-                  <b>Year:</b> {movie.Year}
-                </p>
-                <p>
-                  <b>Type:</b> {movie.Type}
-                </p>
-                <p>
-                  <b>imdbID:</b> {movie.imdbID}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
+    <div className="movie-list">
+      {movies.map((movie) => (
+        <MovieCard key={movie.imdbID} movie={movie} />
+      ))}
+    </div>
   );
 };
 
 export default Home;
 
-// onChange="filterMovies(event)"

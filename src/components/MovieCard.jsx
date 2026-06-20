@@ -1,32 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./MovieCard.css";
 
-const MovieCard = () => {
-  const [movies, setMovies] = useState([]);
+const MovieCard = ({ movie }) => {
   return (
-    <>
-      <div className="container">
-        <div className="movie-list">
-          {movies.map((movie) => (
-            <div className="movie-card">
-              <div className="movie-card__container">
-                <img className="movie__img" src={movie.Poster} />
-                <h3>{movie.Title}</h3>
-                <p>
-                  <b>Year:</b> {movie.Year}
-                </p>
-                <p>
-                  <b>Type:</b> {movie.Type}
-                </p>
-                <p>
-                  <b>imdbID:</b> {movie.imdbID}
-                </p>
-              </div>
-            </div>
-          ))}
+    <div className="container">
+      <div className="movie-card" key={movie.imdbID}>
+        <div className="movie-card__container">
+          <img
+            className="movie__img"
+            src={movie.Poster}
+            alt={`${movie.Title} poster`}
+          />
+          <h3>{movie.Title}</h3>
+          <p>
+            <b>Year:</b> {movie.Year}
+          </p>
+          <p>
+            <b>Type:</b> {movie.Type}
+          </p>
+          <p>
+            <b>IMDb ID:</b> {movie.imdbID}
+          </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
