@@ -1,26 +1,49 @@
 import React, { useState } from "react";
 import axios from "axios";
-import MovieCard from "./MovieCard";
 import "./Search.css";
+import MovieCard from "./MovieCard";
 
-const Search = () => {
-  const [movies, setMovies] = useState([]);
+const Search = ({ onSearchResults }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [movies, setMovies] = useState([]);
+  const [sortOption, setSortOption] = useState("default");
 
   const fetchMovies = async (movieTitle) => {
+    console.log("Fetching movies for:", movieTitle);
     try {
       const { data } = await axios.get(
         `https://www.omdbapi.com/?apikey=88b32aac&s=${movieTitle}`,
       );
-      setMovies(data.Search || []);
+      const results = data.Search || [];
+      setMovies(results);
+      onSearchResults(results); // Ensure this doesn't cause duplicates
     } catch (error) {
       console.error("Error fetching data:", error);
+      setMovies([]);
     }
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
     fetchMovies(searchTerm);
+  };
+
+  const handleSortChange = (e) => {
+    setSortOption(e.target.value);
+  };
+
+  const sortedMovies = () => {
+    let sorted = [...movies];
+    if (sortOption === "az") {
+      sorted.sort((a, b) => a.Title.localeCompare(b.Title));
+    } else if (sortOption === "za") {
+      sorted.sort((a, b) => b.Title.localeCompare(a.Title));
+    } else if (sortOption === "newest") {
+      sorted.sort((a, b) => b.Year - a.Year);
+    } else if (sortOption === "oldest") {
+      sorted.sort((a, b) => a.Year - b.Year);
+    }
+    return sorted;
   };
 
   return (
@@ -31,36 +54,35 @@ const Search = () => {
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search for a movie"
+            placeholder="Search for a movie..."
           />
-          <button className="search__btn" type="submit">
-            Search
-          </button>
+          <button className="search__btn" type="submit">Search</button>
         </form>
-        <div className="movie-list">
-          {movies.map((movie) => (
-      <MovieCard key={movie.imdbID} movie={movie} />
-    ))}
-        </div>
+
+      {movies.length > 0 && (
+        <select
+          className="search__sort"
+          value={sortOption}
+          onChange={handleSortChange}
+          >
+          <option value="default" disabled>
+            Sort By
+          </option>
+          <option value="az">Alphabetical A-Z</option>
+          <option value="za">Alphabetical Z-A</option>
+          <option value="newest">Newest to Oldest</option>
+          <option value="oldest">Oldest to Newest</option>
+        </select>
+      )}
+
+          </div>
+      <div className="movie-list">
+        {sortedMovies().map((movie) => (
+          <MovieCard key={movie.imdbID} movie={movie} />
+        ))}
       </div>
     </div>
   );
 };
 
 export default Search;
-
-//         {/* <select name="" id="filter" onChange="filterMovies(event)">
-//           <option value="" disabled selected>
-//             Sort
-//           </option>
-//           <option value="OLD_TO_NEW">Year, Old to New</option>
-//           <option value="NEW_TO_OLD">Year, New to Old</option>
-//           <option value="A_TO_Z">Alphabetically, A - Z</option>
-//           <option value="Z_TO_A">Alphabetically, Z - A</option>
-//         </select> */}
-//       </div> */}
-//     </div>
-//   );
-// };
-
-// export default Search;

@@ -2,35 +2,35 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import axios from "axios";
 
-const Home = () => {
-  const [movies, setMovies] = useState([]); // Movies to display
-  const [defaultMovies, setDefaultMovies] = useState([]); // Default movies
+const Home = ({ searchResults }) => {
+  const [movies, setMovies] = useState([]);
 
-  // Fetch default movies when the component mounts
+  // Fetch default movies
   useEffect(() => {
     const fetchDefaultMovies = async () => {
-      const { data } = await axios.get(
-        "https://www.omdbapi.com/?apikey=88b32aac&s=friends"
-      );
-      setDefaultMovies(data.Search || []);
-      setMovies(data.Search || []);
+      try {
+        const { data } = await axios.get(
+          "https://www.omdbapi.com/?apikey=88b32aac&s=friends"
+        );
+        setMovies(data.Search || []);
+      } catch (error) {
+        console.error("Error fetching default movies:", error);
+      }
     };
 
     fetchDefaultMovies();
   }, []);
 
-  // Function to handle search results
-  const handleSearchResults = (searchResults) => {
-    if (searchResults.length > 0) {
+  // Update movies if there are search results
+  useEffect(() => {
+    if (searchResults && searchResults.length > 0) {
       setMovies(searchResults);
-    } else {
-      setMovies(defaultMovies); // Reset to default if no search results
     }
-  };
+  }, [searchResults]);
 
   return (
     <div className="movie-list">
-      {movies.map((movie) => (
+      {movies.map(movie => (
         <MovieCard key={movie.imdbID} movie={movie} />
       ))}
     </div>
@@ -38,4 +38,3 @@ const Home = () => {
 };
 
 export default Home;
-
