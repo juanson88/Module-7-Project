@@ -8,7 +8,7 @@ import Search from "./components/Search";
 function App() {
   const [searchResults, setSearchResults] = useState(undefined);
 
- const handleSearchResults = (results) => {
+  const handleSearchResults = (results) => {
     setSearchResults(results);
   };
 
@@ -17,9 +17,11 @@ function App() {
       <div className="App">
         <Nav />
         <Search onSearchResults={handleSearchResults} />
+
         <Routes>
-          <Route path="/" element={<Home searchResults={searchResults} />}></Route>
-          <Route path=":title" element={<Movies />}></Route>
+          <Route path="/" element={<Home searchResults={searchResults} />} />
+
+          <Route path=":title" element={<Movies />} />
         </Routes>
       </div>
     </Router>
