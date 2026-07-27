@@ -1,10 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./MovieCard.css";
 
 const MovieCard = ({ movie }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/movie/${movie.imdbID}`); // Navigate to the details page
+  };
+
   return (
     <div className="container">
-      <div className="movie-card" key={movie.imdbID}>
+      <div className="movie-card" key={movie.imdbID} onClick={handleCardClick}>
         <div className="movie-card__container">
           <img
             className="movie__img"

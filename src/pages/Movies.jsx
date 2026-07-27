@@ -15,8 +15,8 @@ const Movies = () => {
   }
 
   useEffect(() => {
-    fetchMovies(title); // Fetch movies based on the title from the route
-  }, [title]); // Re-run effect whenever the title changes
+    fetchMovies(title);
+  }, [title]);
 
   return (
     <div className="movie-list">
