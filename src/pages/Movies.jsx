@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import MovieCard from "../components/MovieCard";
+import SkeletonLoader from "../components/SkeletonLoader";
 
 const Movies = () => {
   const { title } = useParams();
