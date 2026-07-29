@@ -2,13 +2,14 @@ import React, { useState, useMemo, useEffect } from "react";
 import axios from "axios";
 import "./Search.css";
 
-const Search = ({ onSearchResults }) => {
+const Search = ({ onSearchResults, setLoading }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
   const [sortOption, setSortOption] = useState("default");
 
   const fetchMovies = async (movieTitle) => {
     try {
+      setLoading(true);
       const { data } = await axios.get(
         `https://www.omdbapi.com/?apikey=88b32aac&s=${movieTitle}`,
       );
@@ -17,6 +18,8 @@ const Search = ({ onSearchResults }) => {
     } catch (error) {
       console.error("Error fetching movies:", error);
       setMovies([]);
+    } finally {
+      setLoading(false);
     }
   };
 
