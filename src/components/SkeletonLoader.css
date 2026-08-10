@@ -1,26 +1,93 @@
 /* SkeletonLoader.css */
-.skeleton-loader {
-  display: flex;
-  flex-direction: column;
+.skeleton-container {
   margin: 10px;
-  width: 200px; /* Adjust based on your layout */
+  max-width: 1600px;
+}
+
+.search-results__container {
+  padding: 24px 24px;
+  text-align: center;
+  max-width: 440px;
+  margin-bottom: 40px;
 }
 
 .skeleton-image {
-  height: 150px; /* Adjust size as needed */
+  height: 508.44px; /* Adjust size as needed */
+  width: 342px;
   background-color: lightgrey; /* Light grey for the skeleton */
   border-radius: 5px;
 }
 
-.skeleton-title {
+.search-results__container .skeleton-title {
   height: 20px;
-  margin: 10px 0;
   background-color: lightgrey;
   border-radius: 5px;
+  margin: 30px 60px 20px 60px;
 }
 
-.skeleton-description {
+.skeleton-year {
   height: 15px;
   background-color: lightgrey;
+  border-radius: 5px;
+  margin: 0px 120px;
+}
+.skeleton-type {
+  height: 15px;
+  background-color: lightgrey;
+  border-radius: 5px;
+  margin: 20px 130px;
+}
+.skeleton-id {
+  height: 15px;
+  background-color: lightgrey;
+  border-radius: 5px;
+  margin: 0px 100px;
+}
+
+/* movieInfo CSS*/
+
+.movie-info__container {
+    display: flex;
+  max-width: 1600px; /* Set the maximum width */
+  width: 100%; /* Ensure it takes up the full width of the parent */
+  margin: 0 auto; /* Center it on the page */
+}
+
+.movie-info__content {
+    display: flex;
+    flex-direction: row;
+}
+
+.title-image__movie-info .skeleton-title {
+  height: 30px;
+  background-color: lightgray;
+  border-radius: 5px;
+  width: 300px;
+  margin-top: 90px;
+  margin-bottom: 50px;
+}
+
+.title-image__movie-info .skeleton-image {
+  height: 407px; /* Adjust size as needed */
+  width: 275px;
+  background-color: lightgrey; /* Light grey for the skeleton */
+  border-radius: 5px;
+  margin-left: 30px;
+  margin-top: 50px;
+}
+
+.description__movie-info .skeleton-date-released {
+  height: 15px;
+  background-color: black;
+  border-radius: 5px;
+}
+.description__movie-info .skeleton-rating {
+  height: 15px;
+  background-color: red;
+  border-radius: 5px;
+}
+.description__movie-info .skeleton-run-time {
+  height: 15px;
+  background-color: yellow;
   border-radius: 5px;
 }

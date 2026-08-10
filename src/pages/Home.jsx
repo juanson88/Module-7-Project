@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MovieCard from "../components/MovieCard";
 import SkeletonLoader from "../components/SkeletonLoader";
+import "./Home.css";
 
 const Home = ({ searchResults, loading }) => {
   const [movies, setMovies] = useState([]);
@@ -33,7 +34,12 @@ const Home = ({ searchResults, loading }) => {
   return (
     <div className="movie-list">
       {loading ? (
-        <SkeletonLoader />
+        <div className="skeleton-list">
+            {/* Render multiple skeleton loaders based on expected number of movie cards */}
+            {Array.from({ length: 10 }).map((_, index) => (
+              <SkeletonLoader  key={index} type="searchResults" />
+            ))}
+        </div>
       ) : movies.length > 0 ? (
         movies.map((movie) => <MovieCard key={movie.imdbID} movie={movie} />)
       ) : (

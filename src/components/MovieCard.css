@@ -1,3 +1,4 @@
+
 .movie-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -10,11 +11,13 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 10px;
   border-radius: 10px;
-  
+  max-width: 400px;
 }
 
 .movie-card__container {
   padding: 24px 24px;
+  width: 390px;
+  height: auto;
   text-align: center;
 }
 

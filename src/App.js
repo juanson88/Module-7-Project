@@ -25,7 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home searchResults={searchResults} loading={loading} />} />
           <Route path=":title" element={<Movies />} />
-          <Route path="/movie/:id" element={<MovieInfo prevSearchResults={prevSearchResults} setSearchResults={setSearchResults} />} />
+          <Route path="/movie/:id" element={<MovieInfo prevSearchResults={prevSearchResults} setSearchResults={setSearchResults} loading={loading} setLoading={setLoading} />} />
         </Routes>
       </div>
     </Router>
