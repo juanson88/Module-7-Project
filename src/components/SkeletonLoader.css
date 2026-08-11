@@ -12,10 +12,11 @@
 }
 
 .skeleton-image {
-  height: 508.44px; /* Adjust size as needed */
-  width: 342px;
+  height: 407px; /* Adjust size as needed */
+  width: 275px;
   background-color: lightgrey; /* Light grey for the skeleton */
   border-radius: 5px;
+  margin: 0 auto;
 }
 
 .search-results__container .skeleton-title {
@@ -47,15 +48,31 @@
 /* movieInfo CSS*/
 
 .movie-info__container {
-    display: flex;
-  max-width: 1600px; /* Set the maximum width */
-  width: 100%; /* Ensure it takes up the full width of the parent */
-  margin: 0 auto; /* Center it on the page */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .movie-info__content {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 25px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.title-image__movie-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 0 0 320px;
+  min-width: 280px;
+  margin-top: 50px;
 }
 
 .title-image__movie-info .skeleton-title {
@@ -63,8 +80,7 @@
   background-color: lightgray;
   border-radius: 5px;
   width: 300px;
-  margin-top: 90px;
-  margin-bottom: 50px;
+  margin: 0;
 }
 
 .title-image__movie-info .skeleton-image {
@@ -72,22 +88,67 @@
   width: 275px;
   background-color: lightgrey; /* Light grey for the skeleton */
   border-radius: 5px;
-  margin-left: 30px;
-  margin-top: 50px;
+}
+
+.description__movie-info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1 1 520px;
+  min-width: 280px;
+  margin-top: 150px;
+}
+
+.description__movie-info div {
+  height: 18px;
+  background-color: lightgray;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .description__movie-info .skeleton-date-released {
-  height: 15px;
-  background-color: black;
-  border-radius: 5px;
+  width: 50%;
 }
 .description__movie-info .skeleton-rating {
-  height: 15px;
-  background-color: red;
-  border-radius: 5px;
+  width: 30%;
 }
 .description__movie-info .skeleton-run-time {
-  height: 15px;
-  background-color: yellow;
-  border-radius: 5px;
+  width: 40%;
+}
+.description__movie-info .skeleton-genre {
+  width: 60%;
+}
+.description__movie-info .skeleton-director {
+  width: 55%;
+}
+.description__movie-info .skeleton-actors {
+  width: 80%;
+}
+.description__movie-info .skeleton-box-office {
+  width: 45%;
+}
+.description__movie-info .skeleton-plot {
+  width: 100%;
+  min-height: 70px;
+}
+
+@media (max-width: 813px) {
+  .movie-info__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title-image__movie-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .description__movie-info {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+  }
 }

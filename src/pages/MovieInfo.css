@@ -2,7 +2,7 @@
   margin: 0 auto;
   padding: 0;
   width: 100%;
-  max-width: 1600px;
+  max-width: 1200px;
 }
 
 .info {
@@ -20,6 +20,20 @@
 }
 
 .movie__img {
-  width: 100%;
-  height: 100%;
+  height: 407px; /* Adjust size as needed */
+  width: 275px;
+}
+
+@media (max-width: 813px) {
+  .movie-info-container {
+    display: flex;
+    flex-direction: column; /* Stack title/image and descriptions vertically */
+    align-items: center; /* Center the elements */
+    text-align: center;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
 }

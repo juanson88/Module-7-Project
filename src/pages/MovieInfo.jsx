@@ -46,7 +46,7 @@ const MovieInfo = ({ prevSearchResults, setSearchResults }) => {
   
   return (
     <div className="movie-info-container">
-      <button onClick={handleBackButtonClick}>Back</button>
+      <button onClick={handleBackButtonClick} className="movie-info__backbtn">Back</button>
       <h1>{movieData.Title}</h1>
       <div className="info">
         <div className="title__poster">
