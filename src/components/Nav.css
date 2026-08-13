@@ -3,8 +3,8 @@
   font-family: "Roboto", sans-serif;
 }
 
-.button {
-    border-radius: 50px;
+.homebtn {
+    cursor: pointer;
 }
 
 nav {

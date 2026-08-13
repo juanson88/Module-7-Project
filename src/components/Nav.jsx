@@ -14,7 +14,7 @@ const Nav = () => {
             alt=""
           />
         </figure>
-          <button onClick={() => navigate("/")} >Home</button>
+          <button onClick={() => navigate("/")} className="homebtn">Home</button>
       </nav>
     </>
   );

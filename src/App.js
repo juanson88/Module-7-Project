@@ -5,6 +5,7 @@ import Movies from "./pages/Movies";
 import Nav from "./components/Nav";
 import Search from "./components/Search";
 import MovieInfo from "./pages/MovieInfo";
+import Footer from "./components/Footer";
 
 function App() {
   const [searchResults, setSearchResults] = useState(undefined);
@@ -27,6 +28,7 @@ function App() {
           <Route path=":title" element={<Movies />} />
           <Route path="/movie/:id" element={<MovieInfo prevSearchResults={prevSearchResults} setSearchResults={setSearchResults} loading={loading} setLoading={setLoading} />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

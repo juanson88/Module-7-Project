@@ -12,6 +12,7 @@
 
 .search__btn {
   margin-left: 8px;
+  cursor: pointer;
 }
 
 .search__sort {
