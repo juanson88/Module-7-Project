@@ -23,7 +23,7 @@ const Home = ({ searchResults, loading }) => {
     };
 
     fetchDefaultMovies();
-  }, []);
+  }, [searchResults]);
 
   useEffect(() => {
     if (searchResults !== undefined) {
