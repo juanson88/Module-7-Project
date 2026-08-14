@@ -43,7 +43,7 @@ const Home = ({ searchResults, loading }) => {
       ) : movies.length > 0 ? (
         movies.map((movie) => <MovieCard key={movie.imdbID} movie={movie} />)
       ) : (
-        <h2></h2>
+        null
       )}
     </div>
   );
